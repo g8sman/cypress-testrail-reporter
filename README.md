@@ -9,7 +9,7 @@ Publishes [Cypress](https://www.cypress.io/) runs on TestRail.
 ## Install
 
 ```shell
-$ npm install cypress-testrail-reporter --save-dev
+$ npm install g8sman/cypress-testrail-reporter --save-dev
 ```
 
 ## Differences from main project
