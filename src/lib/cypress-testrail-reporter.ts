@@ -65,7 +65,8 @@ export class CypressTestRailReporter extends reporters.Spec {
           'No testcases were matched. Ensure that your tests are declared correctly and matches Cxxx',
           '\n'
         );
-        this.testRail.deleteRun();
+        // Comment this out so we do not accidentally delete the test run we created in TestRails
+        //this.testRail.deleteRun();
 
         return;
       }
