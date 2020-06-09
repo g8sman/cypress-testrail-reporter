@@ -12,6 +12,10 @@ Publishes [Cypress](https://www.cypress.io/) runs on TestRail.
 $ npm install cypress-testrail-reporter --save-dev
 ```
 
+## Differences from main project
+
+This fork expects the user to provide a runId of a test run already setup in TestRails. This will then update the test run instead of creating a new run each time. In this case, it is up to the user to change the runId as the runs change.
+
 ## Usage
 
 Add reporter to your `cypress.json`:
@@ -25,6 +29,7 @@ Add reporter to your `cypress.json`:
   "password": "password",
   "projectId": 1,
   "suiteId": 1,
+  "runId": 1
 }
 ```
 
@@ -52,7 +57,7 @@ it("Can authenticate a valid userC123", ...
 
 **suiteId**: _number_ suite with which the tests are associated.
 
-**runName**: _string_ (optional) name of the Testrail run.
+**runId**: _string_ test run with which the test results are associated.
 
 ## TestRail Settings
 
