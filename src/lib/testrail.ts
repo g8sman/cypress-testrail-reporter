@@ -47,7 +47,7 @@ export class TestRail {
   public publishResults(results: TestRailResult[]) {
     axios({
       method: 'post',
-      url: `${this.base}/add_results_for_cases/${this.runId}`,
+      url: `${this.base}/add_results_for_cases/${this.options.runId}`,
       headers: { 'Content-Type': 'application/json' },
       auth: {
         username: this.options.username,
@@ -60,7 +60,7 @@ export class TestRail {
         console.log(
           '\n',
           ` - Results are published to ${chalk.magenta(
-            `https://${this.options.domain}/index.php?/runs/view/${this.runId}`
+            `https://${this.options.domain}/index.php?/runs/view/${this.options.runId}`
           )}`,
           '\n'
         );
