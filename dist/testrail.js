@@ -29,6 +29,28 @@ var TestRail = /** @class */ (function () {
         })
             .catch(function (error) { return console.error(error); });
     };
+    TestRail.prototype.getRun = function () {
+        var _this = this;
+        axios({
+            method: 'get',
+            url: this.base + "/get_runs/" + this.options.projectId + "&is_completed=0",
+            headers: { 'Content-Type': 'application/json' },
+            auth: {
+                username: this.options.username,
+                password: this.options.password,
+            },
+        })
+        .then(
+            function (response) {
+                _this.options.runId = response.data[0].id;
+            }
+        )
+        .catch(
+            function (error) {
+                return console.error(error);
+            }
+        );
+    };
     TestRail.prototype.deleteRun = function () {
         axios({
             method: 'post',

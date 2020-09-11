@@ -28,13 +28,16 @@ var CypressTestRailReporter = /** @class */ (function (_super) {
         _this.validate(reporterOptions, 'password');
         _this.validate(reporterOptions, 'projectId');
         _this.validate(reporterOptions, 'suiteId');
-        _this.validate(reporterOptions, 'runId');
+        // _this.validate(reporterOptions, 'runId');
         runner.on('start', function () {
-            var executionDateTime = moment().format('MMM Do YYYY, HH:mm (Z)');
-            var name = (reporterOptions.runName || 'Automated test run') + " " + executionDateTime;
-            var description = 'For the Cypress run visit https://dashboard.cypress.io/#/projects/runs';
             // Commenting this out so we do not create a new test run each time.
+            // var executionDateTime = moment().format('MMM Do YYYY, HH:mm (Z)');
+            // var name = (reporterOptions.runName || 'Automated test run') + " " + executionDateTime;
+            // var description = 'For the Cypress run visit https://dashboard.cypress.io/#/projects/runs';
             //_this.testRail.createRun(name, description);
+
+            // Dynamically get the open test run
+            _this.testRail.getRun();
         });
         runner.on('pass', function (test) {
             var caseIds = shared_1.titleToCaseIds(test.title);

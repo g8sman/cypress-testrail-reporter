@@ -32,6 +32,21 @@ export class TestRail {
       .catch(error => console.error(error));
   }
 
+  public getRun() {
+    axios({
+      method: 'get',
+      url: this.base + "/get_runs/" + this.options.projectId + "&is_completed=0",
+      headers: { 'Content-Type': 'application/json' },
+      auth: {
+          username: this.options.username,
+          password: this.options.password,
+      },})
+      .then(function (response) {
+        this.runId = response.data.id;
+      })
+      .catch(error => console.error(error));
+}
+
   public deleteRun() {
     axios({
       method: 'post',
