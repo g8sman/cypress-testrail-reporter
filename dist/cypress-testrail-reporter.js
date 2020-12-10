@@ -23,6 +23,8 @@ var CypressTestRailReporter = /** @class */ (function (_super) {
         _this.results = [];
         var reporterOptions = options.reporterOptions;
         _this.testRail = new testrail_1.TestRail(reporterOptions);
+        _this.validate(reporterOptions, 'talon_version');
+        _this.validate(reporterOptions, 'talon_web_host');
         _this.validate(reporterOptions, 'domain');
         _this.validate(reporterOptions, 'username');
         _this.validate(reporterOptions, 'password');
@@ -46,7 +48,7 @@ var CypressTestRailReporter = /** @class */ (function (_super) {
                     return {
                         case_id: caseId,
                         status_id: testrail_interface_1.Status.Passed,
-                        comment: "Execution time: " + test.duration + "ms",
+                        comment: "Execution time: " + test.duration + "ms; Talon Web Host = " + reporterOptions['talon_web_host'] + "; Talon Version = " + reporterOptions['talon_version'],
                     };
                 });
                 (_a = _this.results).push.apply(_a, results);
@@ -60,7 +62,7 @@ var CypressTestRailReporter = /** @class */ (function (_super) {
                     return {
                         case_id: caseId,
                         status_id: testrail_interface_1.Status.Failed,
-                        comment: "" + test.err.message,
+                        comment: "" + test.err.message + "; Talon Web Host = " + reporterOptions['talon_web_host'] + "; Talon Version = " + reporterOptions['talon_version'],
                     };
                 });
                 (_a = _this.results).push.apply(_a, results);
